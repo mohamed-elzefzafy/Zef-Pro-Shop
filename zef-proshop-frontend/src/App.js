@@ -1,6 +1,7 @@
 import { Container } from "react-bootstrap";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import { Outlet } from "react-router-dom";
 
 
 const App = () => {
@@ -9,7 +10,7 @@ const App = () => {
   <Header/>
   <main className="py-3">
   <Container>
-    <h1>welcome to zef-proshop</h1>
+<Outlet/>
   </Container>
 
   </main>

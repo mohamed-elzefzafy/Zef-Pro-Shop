@@ -1,4 +1,4 @@
-import { Col, Container } from "react-bootstrap";
+import { Col, Container , Row } from "react-bootstrap";
 
 
 const Footer = () => {
@@ -6,11 +6,11 @@ const Footer = () => {
   return (
     <footer>
       <Container>
-        <row>
+        <Row>
           <Col  className="py-2 text-center">
             <p>Zef-Proshop &copy; {currentYear}</p>
           </Col>
-        </row>
+        </Row>
       </Container>
     </footer>
   )
