@@ -1,23 +1,21 @@
 import { Col, Row } from "react-bootstrap";
-import { useEffect, useState } from "react";
-import request from "../utils/request";
 import Product from "../components/Product";
+import { useGetProductsQuery } from "../redux/slices/productsApiSlice";
 
 
 
 const HomeScreen = () => {
-  const [products, setProducts] = useState([]);
 
-  useEffect(()=>{
-    const fetchProduts = async ()=> {
-      const {data} = await request.get("/api/products");
-      setProducts(data);
-    }
-
-    fetchProduts();
-  },[])
+  const {data : products , isLoading , error} = useGetProductsQuery();
+ 
   return (
   <>
+  {isLoading ? (
+    <h2>Loading...</h2>
+  ) : error ? (
+    <div>{error?.data?.message || error?.message}</div>
+  ) : (
+    <>
     <h1>Latest Products</h1>
     <Row>
     {products?.map(product => 
@@ -26,6 +24,9 @@ const HomeScreen = () => {
       </Col>
     )}
     </Row>
+    </>
+  )}
+
   </>
   )
 }

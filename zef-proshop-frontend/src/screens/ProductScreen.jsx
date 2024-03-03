@@ -3,27 +3,27 @@ import { Button, Card, Col, Image, ListGroup, Row } from "react-bootstrap";
 import Rating from "../components/Rating";
 import { useEffect, useState } from "react";
 import request from "../utils/request";
+import { useGetOneProductQuery } from "../redux/slices/productsApiSlice";
 
 
 const ProductScreen = () => {
   const {productId} = useParams();
-  const [product, setProduct] = useState({});
-  // const product = products.find(product => product._id === productId);
-  useEffect(()=>{
-    const fetchProduct = async() => {
-      const {data} = await request.get(`/api/products/${productId}`)
-        setProduct(data);
-    }
-
-    fetchProduct();
-  },[productId])
-
+  const {data : product , isLoading , error} = useGetOneProductQuery(productId);
 
   return (
     <>
-      <Link className="btn btn-light my-3" to="/">
+          <Link className="btn btn-light my-3" to="/">
         Go Back
       </Link>
+      
+    {isLoading ? (
+      <h2>Loading...</h2>
+    ) : error ? (
+      <div>{error?.data?.message || error?.message}</div>
+    ) : (
+
+      <>
+
       <Row>
         <Col md={5}>
     <Image src={product?.image} fluid alt={product?.name}/>
@@ -83,6 +83,9 @@ description : {product?.description}
 </Card>
         </Col>
       </Row>
+      </>
+    )}
+
     </>
   )
 }

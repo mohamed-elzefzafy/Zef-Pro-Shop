@@ -8,6 +8,8 @@ import reportWebVitals from './reportWebVitals';
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 import HomeScreen from './screens/HomeScreen';
 import ProductScreen from './screens/ProductScreen';
+import { Provider } from 'react-redux';
+import strore from './redux/store';
 
 
 const router = createBrowserRouter(
@@ -22,7 +24,10 @@ const router = createBrowserRouter(
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router}/>
+  <Provider store={strore}>
+  <RouterProvider router={router}/>
+  </Provider>
+
   </React.StrictMode>
 );
 reportWebVitals();

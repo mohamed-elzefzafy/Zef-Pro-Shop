@@ -1,8 +1,9 @@
 import express from "express";
-import products from './data/products.js';
 import cors from "cors";
 import dotenv from "dotenv";
 import connectDb from "./config/connectDb.js";
+import mountRoutes from "./routes/mountRoutes.js";
+import { errorHandler, notFound } from "./middleware/erroeMiddleware.js";
 dotenv.config();
 
 
@@ -39,10 +40,9 @@ app.get('/', (req , res) => {
   res.send("api is running...")
 })
 
-app.get("/api/products" , (req , res) => {
-  res.json(products);
-})
-
+mountRoutes(app);
+app.use(notFound);
+app.use(errorHandler);
 // const ProdSchema = new mongoose.Schema({
 //   name : {
 //     type : String
