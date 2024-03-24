@@ -29,7 +29,7 @@ app.use(
 // app.use(cors({ origin: 'https://zef-proshop.web.app' }));
 
   app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', 'https://zef-proshop.web.app/search/zefzafy');
+    res.setHeader('Access-Control-Allow-Origin', 'https://zef-proshop.web.app');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     res.setHeader('Access-Control-Allow-Credentials', 'true');
