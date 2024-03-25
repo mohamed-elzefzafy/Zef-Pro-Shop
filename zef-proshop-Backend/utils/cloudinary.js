@@ -1,5 +1,5 @@
 import cloudinary from "cloudinary";
-// import path from "path";
+import path from "path";
 import dotenv from "dotenv";
 dotenv.config({path : "./config.env"});
 

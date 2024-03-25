@@ -1,4 +1,7 @@
 import  jwt from 'jsonwebtoken';
+import path from "path";
+import dotenv from "dotenv";
+dotenv.config({path : "./config.env"});
 
 
 export const generateToken = (res , userId) => {
