@@ -276,7 +276,7 @@ onChange={(e) => setQty(Number(e.target.value))}
             <Alert variant="danger">Login first to send review</Alert>
           }
     
-      {userInfo.name &&
+      {userInfo?.name &&
     
         <Form>
         <h5>  Review Form</h5>

@@ -156,7 +156,7 @@ res.status(200).json({
   //  Change the profilePhoto field in the DB
   user.profilePhoto = {
     url : result.secure_url,
-    publicId : result.public_id
+    public_id : result.public_id
   }
 
 
@@ -225,12 +225,12 @@ res.status(200).json("user deleted");
 
    })
 
-     /**---------------------------------------
- * @desc    update user
- * @route   /api/v1/users/:id
- * @method  PUT
- * @access  private  - admin
- ----------------------------------------*/
- export const updateUser = asyncHandler(async (req , res) => {
-  res.send("updateUser");
-   })
+//      /**---------------------------------------
+//  * @desc    update user
+//  * @route   /api/v1/users/:id
+//  * @method  PUT
+//  * @access  private  - admin
+//  ----------------------------------------*/
+//  export const updateUser = asyncHandler(async (req , res) => {
+//   res.send("updateUser");
+//    })
