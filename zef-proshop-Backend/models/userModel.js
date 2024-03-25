@@ -19,7 +19,7 @@ const UserSchema = new mongoose.Schema({
     type : Object,
   default : {
     url : "https://res.cloudinary.com/dw1bs1boz/image/upload/v1702487318/Zef-Blog/Default%20images/download_w26sr9.jpg",
-    publicId : null
+    public_id : null
   }
   },
   isAdmin : {

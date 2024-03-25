@@ -147,8 +147,8 @@ res.status(200).json({
   user.password = password || user.password
 
   if (req.file) {
-    if (user.profilePhoto.publicId !== null) {
-      await cloudinaryRemoveImage(user.profilePhoto.publicId)
+    if (user.profilePhoto.public_id !== null) {
+      await cloudinaryRemoveImage(user.profilePhoto.public_id)
     }
   // upload the photo to cloudinary
   const result = await cloudinaryUploadImage(req.file.path);
@@ -215,9 +215,9 @@ if (user.isAdmin) {
   return next(customErrorClass.create(`you can't delete admin` , 404))
 }
 
-if (user.profilePhoto.public_Id !== null) 
+if (user.profilePhoto.public_id !== null) 
 {
-   await cloudinaryRemoveImage(user.profilePhoto.public_Id);
+   await cloudinaryRemoveImage(user.profilePhoto.public_id);
 }
 
 await user.deleteOne()
