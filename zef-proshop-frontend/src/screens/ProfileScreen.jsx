@@ -126,7 +126,7 @@ toast.success("profile updated successfully");
 <Message variant="danger">{ordersError.data.message || ordersError.message}</Message>
 ) : (
   <>
-  {orders.length > 0 ? (
+  {orders?.length > 0 ? (
     <Table striped hover responsive className="table-sm">
 <thead>
 <tr>

@@ -12,9 +12,9 @@ const ProductCarousel = () => {
   (
     <Carousel pause="hover" className='bg-primary mb-4' style={{height : 300}} variant="dark">
       {products?.map(product => 
-      <Carousel.Item>
+      <Carousel.Item key={product?._id}>
         <Link to={`/products/${product?._id}`}>
-        <Image src={product.images[0].url}  alt={product?.name} style={{maxHeight : 300 , objectFit : "contain"}}/>
+        <Image src={product?.images[0].url}  alt={product?.name} style={{maxHeight : 300 , objectFit : "contain"}}/>
            <Carousel.Caption className='carousel-caption'>
          <h2>{product?.name} {" "} ${product?.price}</h2>
            </Carousel.Caption>
