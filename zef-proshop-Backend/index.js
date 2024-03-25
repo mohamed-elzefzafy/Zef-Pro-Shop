@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import connectDb from "./config/connectDb.js";
 import mountRoutes from "./routes/mountRoutes.js";
 import { errorHandler, notFound } from "./middleware/erroeMiddleware.js";
+import session from "express-session";
 import cookieParser from "cookie-parser";
 dotenv.config({path : "./config.env"});
 
@@ -27,6 +28,31 @@ app.use(
     // origin: 'https://zef-proshop.web.app'
   })
 );
+
+
+
+app.use(session({
+  secret: 'your-secret-key',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: true } // Use 'secure: true' for HTTPS
+}));
+
+// Set a session
+app.get('/set-session', (req, res) => {
+  req.session.sessionName = 'sessionValue';
+  res.send('Session has been set');
+});
+
+// Get a session
+app.get('/get-session', (req, res) => {
+  const sessionValue = req.session.sessionName;
+  res.send('Session value: ' + sessionValue);
+});
+
+
+
+
 
 // app.use(cors({ origin: 'https://zef-proshop.web.app' }));
 
